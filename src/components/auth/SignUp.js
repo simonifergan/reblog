@@ -9,7 +9,7 @@ function emptyUser() {
     }
 }
 
-const SignUp = () => {
+const SignUp = (props) => {
     const user = emptyUser();
     user.email = useFormInput(user.email);
     user.password = useFormInput(user.password);
@@ -18,8 +18,11 @@ const SignUp = () => {
 
     const save = (e) => {
         e.preventDefault();
-        console.log('You clicked save user', user);
-        console.log(user.firstname);
+        const newUser = emptyUser();
+        Object.keys(user).forEach(key => {
+            newUser[key] = (user[key])? user[key].value : null;
+        })
+        props.history.push('/');
     }
     
     return (
@@ -39,8 +42,6 @@ function useFormInput(initialValue) {
     const [value, setValue] = useState(initialValue);
     const handleChange = (e) => {
         setValue(e.target.value);
-        console.log(e.target.value);
-        
     }
     return {
         value,

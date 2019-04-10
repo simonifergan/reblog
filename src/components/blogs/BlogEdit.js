@@ -9,7 +9,7 @@ function emptyBlog() {
 }
 
 const BlogEdit = (props) => {
-    const [blog, setBlog] = useState(emptyBlog());
+    const [blog] = useState(emptyBlog());
 
 
     useEffect(() => {
