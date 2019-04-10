@@ -22,7 +22,9 @@ const SignUp = (props) => {
         Object.keys(user).forEach(key => {
             newUser[key] = (user[key])? user[key].value : null;
         })
+        props.saveUser(newUser);
         props.history.push('/');
+
     }
     
     return (
