@@ -4,9 +4,11 @@
 @import 'mixins';
 @import 'vars';
 
-// Pages
-@import './pages/signup';
-@import './pages/blogList';
+// Components
+@import './components/signup';
+@import './components/blogList';
+@import './components/blogDetails';
+@import './components/postList';
 
 * {
     box-sizing: border-box;

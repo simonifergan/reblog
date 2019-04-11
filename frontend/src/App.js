@@ -11,7 +11,7 @@ import Navbar from './components/layout/Navbar';
 import BlogList from './components/blogs/BlogList';
 import BlogDetails from './components/blogs/BlogDetails';
 // import BlogEdit from './components/blogs/BlogEdit';
-import PostEdit from './components/blogs/PostEdit';
+// import PostEdit from './components/blogs/PostEdit';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
 import UserService from './services/UserService';
@@ -45,7 +45,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={(props) => (<BlogList {...props} blogs={blogs} />)} />
             <Route path='/blog/:blogId' render={(props) => (<BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} />)} />
-            <Route path='/post/:postId?' render={(props) => (<PostEdit {...props} savePost={this.savePost} />)} />
+            {/* <Route path='/post/:postId?' render={(props) => (<PostEdit {...props} savePost={this.savePost} />)} /> */}
             <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
             <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
           </Switch>

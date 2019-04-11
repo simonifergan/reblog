@@ -1,0 +1,18 @@
+.post-list {
+    ul {
+        .post-preview {
+            h3 {
+                font-size: 1.225em;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+            p {
+                margin-bottom: 20px;
+                padding-bottom: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}

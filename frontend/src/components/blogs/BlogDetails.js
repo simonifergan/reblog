@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PostList from '../posts/PostList';
 
 
 const BlogDetails = (props) => {
@@ -16,9 +17,13 @@ const BlogDetails = (props) => {
   const {blog} = props;
 
   return (blog)? (
-    <section>
-      <h1>{blog.title}</h1>
-      <p>{blog.desc}</p>
+    <section className="blog-details">
+      <article className="blog-info">
+        <h2>{blog.title}</h2>
+        <p>{blog.desc}</p>
+        <img src={blog.thumbnail} alt=""/>
+      </article>
+      <PostList posts={blog.posts} />
     </section>
   ) : 'There was an error, please refresh.';
 }
