@@ -37,15 +37,14 @@ class App extends Component {
 
   render() {
     const { blogs } = this.props;
-    const { user } = this.props;
+    // const { user } = this.props;
     return (
       <div className="App">
         <BrowserRouter>
           <Navbar />
-          {(user)? `${user.email} ${user._id}`: 'No user'}
           <Switch>
             <Route exact path='/' render={(props) => (<BlogList {...props} blogs={blogs} />)} />
-            <Route path='/blog/:blogId' component={BlogDetails} />
+            <Route path='/blog/:blogId' render={(props) => (<BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} />)} />
             <Route path='/post/:postId?' render={(props) => (<PostEdit {...props} savePost={this.savePost} />)} />
             <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
             <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
@@ -59,6 +58,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     blogs: state.blog.blogs,
+    blogToDisplay: state.blog.blogToDisplay,
     user: state.auth.user,
   }
 }

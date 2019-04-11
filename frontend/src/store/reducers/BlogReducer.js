@@ -1,6 +1,7 @@
 
 const initState = {
-    blogs: []
+    blogs: [],
+    blogToDisplay: null,
 };
 
 const blogReducer = (state = initState, action) => {
@@ -10,9 +11,14 @@ const blogReducer = (state = initState, action) => {
                 ...state,
                 blogs: action.blogs
             }
+        case 'SET_BLOG_TO_DISPLAY':
+            return {
+                ...state,
+                blogToDisplay: action.blog,
+            }
         default:
             return state
-            
+
 
     }
 }

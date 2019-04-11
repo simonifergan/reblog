@@ -11,3 +11,15 @@ export const loadBlogs = () => {
         }
     }
 }
+
+export const loadBlogById = (blogId) => {
+    return async (dispatch) => {
+        try {
+            const blog = await BlogService.getById(blogId);
+            dispatch({type: 'SET_BLOG_TO_DISPLAY', blog})
+        } catch(err) {
+            console.log(err);
+        }
+
+    }
+}
