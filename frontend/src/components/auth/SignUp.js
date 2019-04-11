@@ -22,18 +22,30 @@ const SignUp = (props) => {
         Object.keys(user).forEach(key => {
             newUser[key] = (user[key])? user[key].value : null;
         })
-        props.saveUser(newUser);
+        props.signup(newUser);
         props.history.push('/');
 
     }
     
     return (
-        <section className="sign-up">
+        <section className="sign-up-page">
             <form onSubmit={save}>
-                <input {...user.email}/>
-                <input {...user.password}/>
-                <input {...user.firstname}/>
-                <input {...user.lastname}/>
+                <label>
+                    E-mail:
+                    <input {...user.email}/>
+                </label>
+                <label>
+                    Password:
+                    <input {...user.password}/>
+                </label>
+                <label>
+                    First name:
+                    <input {...user.firstname}/>
+                </label>
+                <label>
+                    Last name:
+                    <input {...user.lastname}/>
+                </label>
                 <button type="submit">Sign up</button>
             </form>
         </section>

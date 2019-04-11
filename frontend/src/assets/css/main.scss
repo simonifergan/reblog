@@ -1,0 +1,48 @@
+// Partials
+@import 'reset';
+@import 'fonts';
+@import 'mixins';
+@import 'vars';
+
+// Pages
+@import './pages/signup';
+
+* {
+    box-sizing: border-box;
+}
+
+img, audio, iframe, video {
+    width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
+.main-nav {
+    box-shadow: 0px 1px 3px black;
+    .wrapper {
+        @include flex(row,space-between,center);
+        @include wrapper(1200px);
+        font-family: $font-raleway;
+        width: 100%;
+        padding: 20px 0;
+        .logo {
+            font-size: 2em;
+        }
+        .links {
+            @include flex(row, space-between, center);
+            font-size: 1.225em;
+            a:not(:first-of-type) {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,11 @@
+.sign-up-page {
+    form {
+        @include flex(column, center, center);
+        label {
+            padding: 20px;
+            input {
+                margin-left: 10px;
+            }
+        }
+    }
+}
