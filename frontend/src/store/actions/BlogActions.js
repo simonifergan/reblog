@@ -23,3 +23,9 @@ export const loadBlogById = (blogId) => {
 
     }
 }
+
+export const clearBlogToDisplay = () => {
+    return (dispatch) => {
+        dispatch({type: 'SET_BLOG_TO_DISPLAY', blog: null })
+    }
+}

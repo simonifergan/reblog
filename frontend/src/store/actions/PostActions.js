@@ -11,3 +11,9 @@ export const loadPostById = (postId) => {
 
     }
 }
+
+export const clearPostToDisplay = () => {
+    return (dispatch) => {
+        dispatch({type: 'SET_POST_TO_DISPLAY', post: null })
+    }
+}

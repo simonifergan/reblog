@@ -34,8 +34,19 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path='/' render={(props) => (<BlogList {...props} blogs={blogs} />)} />
-            <Route path='/blog/:blogId' render={(props) => (<BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} />)} />
-            <Route path='/post/:postId' render={(props) => (<PostDetails {...props} post={this.props.postToDisplay} loadPostById={this.props.loadPostById} />)} />
+            <Route
+              path='/blog/:blogId'
+              render={
+                (props) => (
+                  <BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} clearBlogToDisplay={this.props.clearBlogToDisplay} />)
+              }
+            />
+            <Route
+              path='/post/:postId'
+              render={
+                (props) => (<PostDetails {...props} post={this.props.postToDisplay} loadPostById={this.props.loadPostById} clearPostToDisplay={this.props.clearPostToDisplay} />)
+              }
+            />
             {/* <Route path='/post/:postId?' render={(props) => (<PostEdit {...props} savePost={this.savePost} />)} /> */}
             <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
             <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />

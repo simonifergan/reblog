@@ -10,7 +10,7 @@ const BlogDetails = (props) => {
       props.loadBlogById(props.match.params.blogId)
     } else props.loadBlogById(props.match.params.blogId)
     return () => {
-      setBlogId(null);
+      props.clearBlogToDisplay();
     }
   }, [props.match.params.blogId])
 
@@ -25,7 +25,7 @@ const BlogDetails = (props) => {
       </article>
       <PostList posts={blog.posts} />
     </section>
-  ) : 'There was an error, please refresh.';
+  ) : null;
 }
 
 export default BlogDetails

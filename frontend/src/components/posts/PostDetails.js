@@ -8,7 +8,7 @@ const PostDetails = (props) => {
       props.loadPostById(props.match.params.postId)
     } else props.loadPostById(props.match.params.postId)
     return () => {
-      setPostId(null);
+      props.clearPostToDisplay();
     }
   }, [props.match.params.postId])
 
@@ -19,7 +19,7 @@ const PostDetails = (props) => {
         <h2>{post.title}</h2>
         <p>{post.content}</p>
     </section>
-  ) : 'There was an error, please refresh.';
+  ) : null;
 }
 
 export default PostDetails
