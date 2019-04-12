@@ -9,8 +9,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 // Import Routes
-const blogRoute = require('./routes/blog.route')
 const userRoute = require('./routes/user.route')
+const blogRoute = require('./routes/blog.route')
+const postRoute = require('./routes/post.route')
 
 // app initiation
 const app = express()
@@ -31,8 +32,9 @@ app.use(express.static('public'));
 
 
 // Use routes
-blogRoute(app);
 userRoute(app);
+blogRoute(app);
+postRoute(app);
 
 app.get('/', (req, res) => {
     res.send('Hello ReBlog Backend!')

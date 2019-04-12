@@ -1,19 +1,22 @@
-const posts = [];
+import Axios from 'axios';
+const axios = Axios.create({ withCredentials: true });
+
+const POST_API = (process.env.NODE_ENV !== 'development')
+    ? '/api/post'
+    : '//localhost:3003/api/post';
+
 
 function query() {
-    return JSON.parse(JSON.stringify(posts));
+    return [];
 }
 
-function save(post) {
-    post._id = _generateId();
-    posts.push(post);
-    console.log('new post added:', post)
+async function getById(id) {
+    const {data} = await axios.get(`${POST_API}/${id}`);
+    return data;
 }
+
 export default {
     query,
-    save
+    getById,
 };
 
-function _generateId() {
-    return '_' + Math.random().toString(36).substr(2, 9);
-  };

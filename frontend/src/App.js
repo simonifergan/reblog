@@ -3,32 +3,22 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as blogActions from './store/actions/BlogActions';
 import * as authActions from './store/actions/AuthActions';
+import * as blogActions from './store/actions/BlogActions';
+import * as postActions from './store/actions/PostActions';
 
 // Components
 import Navbar from './components/layout/Navbar';
+import SignUp from './components/auth/SignUp';
+import SignIn from './components/auth/SignIn';
 import BlogList from './components/blogs/BlogList';
 import BlogDetails from './components/blogs/BlogDetails';
 // import BlogEdit from './components/blogs/BlogEdit';
 // import PostEdit from './components/blogs/PostEdit';
-import SignUp from './components/auth/SignUp';
-import SignIn from './components/auth/SignIn';
-import UserService from './services/UserService';
-import PostService from './services/PostService';
+import PostDetails from './components/posts/PostDetails';
 
 class App extends Component {
-  state = {
-    users: UserService.query(),
-    posts: PostService.query(),
-  }
 
-  savePost = async (post) => {
-    await PostService.save(post);
-    this.setState({
-      posts: [...this.state.posts, post]
-    })
-  }
 
   componentDidMount() {
     this.props.loadBlogs();
@@ -45,6 +35,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={(props) => (<BlogList {...props} blogs={blogs} />)} />
             <Route path='/blog/:blogId' render={(props) => (<BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} />)} />
+            <Route path='/post/:postId' render={(props) => (<PostDetails {...props} post={this.props.postToDisplay} loadPostById={this.props.loadPostById} />)} />
             {/* <Route path='/post/:postId?' render={(props) => (<PostEdit {...props} savePost={this.savePost} />)} /> */}
             <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
             <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
@@ -57,15 +48,17 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.auth.user,
     blogs: state.blog.blogs,
     blogToDisplay: state.blog.blogToDisplay,
-    user: state.auth.user,
+    postToDisplay: state.post.postToDisplay,
   }
 }
 
 const mapDispatchToProps = {
+  ...authActions,
   ...blogActions,
-  ...authActions
+  ...postActions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

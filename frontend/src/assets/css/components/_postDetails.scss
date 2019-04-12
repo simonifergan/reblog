@@ -1,0 +1,14 @@
+.post-details {
+    @include wrapper(860px);
+    padding: 20px 0;
+    font-family: $font-raleway;
+    h2 {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+}

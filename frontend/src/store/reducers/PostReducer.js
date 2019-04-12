@@ -1,13 +1,18 @@
 const initState = {
-    posts : [
-        { id: 'post1', title: 'My first blog-post', desc: 'I am a blog post by some anonymous user, do you like me now?' },
-        { id: 'post2', title: 'My second blog-post', desc: 'I am a blog post by some anonymous user, do you like me now?' },
-        { id: 'post3', title: 'My whatever blog-post', desc: 'I am a blog post by some anonymous user, do you like me now?' },
-    ]
+   postToDisplay: null,
 };
 
 const postReducer = (state = initState, action) => {
-    return state;
+    switch (action.type) {
+        case 'SET_POST_TO_DISPLAY':
+        console.log(action.post)
+            return {
+                ...state,
+                postToDisplay: action.post
+            }
+        default:
+            return state
+    }
 }
 
 export default postReducer;
