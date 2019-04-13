@@ -15,8 +15,14 @@ async function getById(id) {
     return data;
 }
 
+async function save(post) {
+    const {data} = await axios.post(POST_API, post)
+    return data;
+}
+
 export default {
     query,
     getById,
+    save,
 };
 

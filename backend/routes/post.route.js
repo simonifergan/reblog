@@ -12,4 +12,11 @@ module.exports = (app) => {
         else res.status(404).end();
     });
 
+    app.post(BASE_URL, async (req, res) => {
+        const newPost = req.body;
+        const post = await postService.save(newPost);
+        if (post) res.json(post);
+        else res.status(500).end();
+    });
+
 }

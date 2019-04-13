@@ -1,17 +1,10 @@
-.post-details {
+.post-edit {
     @include wrapper(860px);
-    padding: 20px 0;
-    font-family: $font-raleway;
-    color: #333;
-    line-height: 1.5; 
-    h1.title {
-        font-size: 2.5em;
-        font-weight: 600;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
+    padding: 30px 0;
     .post-container {
-     
+        font-family: $font-raleway;
+        color: #333;
+        line-height: 1.5; 
         h1 { 
             display: block;
             font-size: 2em;

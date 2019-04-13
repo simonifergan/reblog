@@ -1,9 +1,9 @@
 .blog-list {
-    min-height: 100vh;
     @include wrapper(1200px);
     padding: 20px 0;
     font-family: $font-raleway;
     ul {
+        margin-top: 20px;
         display: grid;
         grid-template-rows: repeat(auto-fill, 200px);
         grid-row-gap: 20px;

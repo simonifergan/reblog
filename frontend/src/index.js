@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/css/main.scss';
 import App from './App';
+
+// CSS
+import './assets/css/main.scss';
+
+// State
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './store/reducers/Reducer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+
+// Service worker
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducer, applyMiddleware(thunk));

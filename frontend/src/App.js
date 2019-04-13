@@ -7,6 +7,9 @@ import * as authActions from './store/actions/AuthActions';
 import * as blogActions from './store/actions/BlogActions';
 import * as postActions from './store/actions/PostActions';
 
+// Transitions
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 // Components
 import Navbar from './components/layout/Navbar';
 import SignUp from './components/auth/SignUp';
@@ -14,7 +17,7 @@ import SignIn from './components/auth/SignIn';
 import BlogList from './components/blogs/BlogList';
 import BlogDetails from './components/blogs/BlogDetails';
 // import BlogEdit from './components/blogs/BlogEdit';
-// import PostEdit from './components/blogs/PostEdit';
+import PostEdit from './components/posts/PostEdit';
 import PostDetails from './components/posts/PostDetails';
 
 class App extends Component {
@@ -32,25 +35,40 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Navbar />
-          <Switch>
-            <Route exact path='/' render={(props) => (<BlogList {...props} blogs={blogs} />)} />
-            <Route
-              path='/blog/:blogId'
-              render={
-                (props) => (
-                  <BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} clearBlogToDisplay={this.props.clearBlogToDisplay} />)
-              }
-            />
-            <Route
-              path='/post/:postId'
-              render={
-                (props) => (<PostDetails {...props} post={this.props.postToDisplay} loadPostById={this.props.loadPostById} clearPostToDisplay={this.props.clearPostToDisplay} />)
-              }
-            />
-            {/* <Route path='/post/:postId?' render={(props) => (<PostEdit {...props} savePost={this.savePost} />)} /> */}
-            <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
-            <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
-          </Switch>
+          <Route render={({location}) => (
+            <TransitionGroup>
+              <CSSTransition
+                key={location.key}
+                timeout={500}
+                classNames="fade"
+              >
+                <Switch location={location}>
+                  <Route exact path='/' render={(props) => (<BlogList {...props} blogs={blogs} />)} />
+                  <Route
+                    path='/blog/:blogId'
+                    render={
+                      (props) => (
+                        <BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} clearBlogToDisplay={this.props.clearBlogToDisplay} />)
+                    }
+                  />
+                  <Route
+                    path='/post/:postId'
+                    render={
+                      (props) => (<PostDetails {...props} post={this.props.postToDisplay} loadPostById={this.props.loadPostById} clearPostToDisplay={this.props.clearPostToDisplay} />)
+                    }
+                  />
+                  <Route
+                    path='/new/post/:postId?'
+                    render={
+                      (props) => (<PostEdit {...props} savePost={this.props.savePost} />)
+                    }
+                  />
+                  <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
+                  <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          )} />
         </BrowserRouter>
       </div>
     );
