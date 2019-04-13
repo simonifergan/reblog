@@ -15,9 +15,6 @@ const Toolbar = ({ editorState, RichUtils, stateChange }) => {
                 <option value="header-one" label="h1"></option>
                 <option value="header-two" label="h2"></option>
                 <option value="header-three" label="h3"></option>
-                <option value="header-four" label="h4"></option>
-                <option value="header-five" label="h5"></option>
-                <option value="header-six" label="h6"></option>
             </select>
 
             <button onClick={() => onInlineStyle('BOLD')}>B</button>

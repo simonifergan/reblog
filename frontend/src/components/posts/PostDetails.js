@@ -5,6 +5,7 @@ import 'draft-js/dist/Draft.css';
 
 const PostDetails = (props) => {
   const [postId, setPostId] = useState(props.match.params.postId);
+  const docTitle = document.title;
   const { post } = props;
   
   useEffect(() => {
@@ -13,13 +14,20 @@ const PostDetails = (props) => {
       props.loadPostById(props.match.params.postId)
     } else props.loadPostById(props.match.params.postId)
 
-
-
     return () => {
       props.clearPostToDisplay();
     }
   }, [props.match.params.postId])
 
+  useEffect(() => {
+    if (post) {
+      document.title = docTitle + ' - ' + post.title;
+    }
+
+    return () => {
+      document.title = docTitle;
+    }
+  }, [post])
 
   return (post) ? (
     <section className="page post-details">

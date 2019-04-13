@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
@@ -8,6 +8,8 @@ import Toolbar from '../editor/Toolbar';
 const PostEdit = (props) => {
     const [title, setTitle] = useState('');
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    const [docTitle] = useState(document.title);
+    const editorEl = useRef(null);
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
@@ -20,8 +22,18 @@ const PostEdit = (props) => {
         setEditorState(newState);
 
     }
+    
 
-    const save = () => { 
+    useEffect(() => {
+        if (title) document.title = docTitle + ' - ' + title;
+
+        return () => {
+            document.title = docTitle
+        };
+    }, [title])
+
+    
+    const save = () => {
         const post = {
             blogId: '5cae3735f039efa164fd137d',
             title,
@@ -35,9 +47,10 @@ const PostEdit = (props) => {
     return (
         <section className="page post-edit">
             <input value={title} onChange={handleTitle} placeholder="Type your post's title..." />
-            <Toolbar editorState={editorState} RichUtils={RichUtils} stateChange={handleChange} />
+            <Toolbar editorState={editorState} editorEl={editorEl} RichUtils={RichUtils} stateChange={handleChange} />
             <div className="post-container">
                 <Editor
+                    ref={editorEl}
                     editorState={editorState}
                     onChange={handleChange}
                     handleKeyCommand={handleKeyCommand}
