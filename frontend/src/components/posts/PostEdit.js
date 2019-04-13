@@ -13,8 +13,8 @@ const PostEdit = (props) => {
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
-        document.title = e.target.value;
     }
+
     const handleChange = (editorState) => setEditorState(editorState);
 
     const handleKeyCommand = (command) => {
@@ -22,7 +22,6 @@ const PostEdit = (props) => {
         setEditorState(newState);
 
     }
-    
 
     useEffect(() => {
         if (title) document.title = docTitle + ' - ' + title;
