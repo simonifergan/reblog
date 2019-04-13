@@ -28,7 +28,7 @@ const SignUp = (props) => {
     }
     
     return (
-        <section className="sign-up-page">
+        <section className="page sign-up-page">
             <form onSubmit={save}>
                 <label>
                     E-mail:

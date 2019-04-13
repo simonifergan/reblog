@@ -33,7 +33,7 @@ const PostEdit = (props) => {
     }
 
     return (
-        <section className="post-edit">
+        <section className="page post-edit">
             <input value={title} onChange={handleTitle} placeholder="Type your post's title..." />
             <Toolbar editorState={editorState} RichUtils={RichUtils} stateChange={handleChange} />
             <div className="post-container">

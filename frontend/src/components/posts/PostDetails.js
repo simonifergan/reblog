@@ -22,7 +22,7 @@ const PostDetails = (props) => {
 
 
   return (post) ? (
-    <section className="post-details">
+    <section className="page post-details">
       <h1 className="title">{post.title}</h1>
       <div className="post-container">
         <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(post.content)))} readOnly />

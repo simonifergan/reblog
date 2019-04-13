@@ -55,6 +55,18 @@ p {
     }
 }
 
+main {
+    position: relative;
+    @include wrapper(860px);
+    padding: 30px 0 20px 0;
+    .page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
 // react transitions:
 
 .fade-appear, .fade-enter {

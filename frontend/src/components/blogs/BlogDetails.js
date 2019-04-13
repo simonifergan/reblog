@@ -17,7 +17,7 @@ const BlogDetails = (props) => {
   const {blog} = props;
 
   return (blog)? (
-    <section className="blog-details">
+    <section className="page blog-details">
       <article className="blog-info">
         <h2>{blog.title}</h2>
         <p>{blog.desc}</p>

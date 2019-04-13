@@ -18,7 +18,7 @@ const SignIn = (props) => {
     }
     
     return (
-        <section className="sign-up">
+        <section className="page sign-in-page">
             <form onSubmit={auth}>
             <div className="error-msg">{(error)? 'Wrong e-mail and/or password.': null}</div>
                 <input {...user.email}/>
