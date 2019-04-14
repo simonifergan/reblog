@@ -22,11 +22,9 @@ import PostDetails from './components/posts/PostDetails';
 
 class App extends Component {
 
-
   componentDidMount() {
     this.props.loadBlogs();
   }
-
 
   render() {
     const { blogs } = this.props;
