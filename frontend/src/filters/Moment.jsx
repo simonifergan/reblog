@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-export default ({children , fromNow}) => {
+const Moment = ({children , fromNow}) => {
     let time;
     if (fromNow) time = moment(children).fromNow();
     return (   
@@ -10,3 +10,5 @@ export default ({children , fromNow}) => {
         </span>
     )
 }
+
+export default React.memo(Moment);
