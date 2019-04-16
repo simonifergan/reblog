@@ -1,0 +1,9 @@
+@import '../../assets/css/mixins';
+@import '../../assets/css/fonts';
+
+
+.user-pop-up {
+    .user-thumbnail {
+        @include userImg(50px, 50px);
+    }
+}

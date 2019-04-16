@@ -3,6 +3,7 @@
 
 .post-list {
     font-family: $font-raleway;
+    color: #333;
 
     ul {
         margin-top: 20px;
@@ -13,23 +14,42 @@
         .post-preview {
             @include flex(row, space-between);
 
-            h2 {
-                font-size: 1.5em;
-                font-weight: 600;
-                margin-bottom: 10px;
-            }
+         
 
-            p {
-                margin-bottom: 20px;
-                padding-bottom: 5px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+            .post-text {
+                @include flex(column, space-between);
+
+                .top-container {
+                    h2 {
+                        font-size: 1.5em;
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                    }
+
+                    h3 {
+                        color: lighten(#333, 30%);
+                    }
+        
+                    p {
+                        margin-bottom: 20px;
+                        padding-bottom: 5px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+        
+                  
+                }
+                .bottom-container {
+                    font-size: 0.875em;
+                    
+                }
+
             }
 
             img {
-                width: 300px;
-                height: 200px;
+                width: 150px;
+                height: 100px;
             }
 
         }
