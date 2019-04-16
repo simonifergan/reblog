@@ -1,11 +1,30 @@
+@import '../../assets/css/mixins';
+@import '../../assets/css/fonts';
+
 .sign-up-page {
+
     form {
+        font-family: $font-raleway;
         @include flex(column, center, center);
+
         label {
+            display: grid;
+            grid-template-columns: 0.5fr 1fr;
             padding: 20px;
+
             input {
                 margin-left: 10px;
             }
+
+            
+
         }
+
+        button {
+            align-self: flex-end;
+            @include button();
+        }
+
     }
+
 }

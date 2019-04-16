@@ -1,0 +1,8 @@
+@import '../../assets/css/mixins';
+
+.user-preview {
+    img {
+
+        @include userImg(250px, 250px);
+    }
+}

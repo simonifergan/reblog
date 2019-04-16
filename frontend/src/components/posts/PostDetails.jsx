@@ -9,7 +9,7 @@ const PostDetails = (props) => {
   const [postId, setPostId] = useState(props.match.params.postId);
   const docTitle = document.title;
   const { post } = props;
-  
+
   useEffect(() => {
     if (postId !== props.match.params.postId) {
       setPostId(props.match.params.postId);
@@ -31,9 +31,19 @@ const PostDetails = (props) => {
     }
   }, [post])
 
+
+  const remove = async () => {
+    const res = await props.removePost(postId);
+    if (res) props.history.push('/');
+  }
+
   return (post) ? (
     <section className="page post-details">
-      <h1 className="title">{post.title}</h1>
+      <button className="btn btn-remove-post" onClick={remove}>Delete post</button>
+      <div className="post-intro">
+        <h1 className="title">{post.title}</h1>
+        <h2 className="subtitle">{post.subtitle}</h2>
+      </div>
       <div className="post-container">
         <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(post.content)))} readOnly />
       </div>
@@ -41,4 +51,4 @@ const PostDetails = (props) => {
   ) : null;
 }
 
-export default PostDetails
+export default PostDetails;

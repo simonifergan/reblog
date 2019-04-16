@@ -1,0 +1,30 @@
+@import '../../assets/css/mixins';
+@import '../../assets/css/fonts';
+
+.editor-toolbar {
+    padding: 20px;
+    margin-bottom: 20px;
+
+
+    > *:not(:first-child) {
+        margin-left: 15px;
+    }
+
+    .btn {
+        @include button(transparent, black);
+
+        &.btn-bold {
+            font-weight: bold;
+        }
+    
+        &.btn-italic {
+            font-style: italic;
+        }
+
+        &.btn-underline {
+            text-decoration: underline;
+        }
+    }
+
+    
+}

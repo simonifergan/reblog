@@ -1,10 +1,18 @@
+@import '../../assets/css/mixins';
+@import '../../assets/css/fonts';
+
 .post-list {
+    font-family: $font-raleway;
     ul {
+        margin-top: 20px;
+        display: grid;
+        grid-template-rows: repeat(auto-fill);
+        grid-row-gap: 20px;
         .post-preview {
-            h3 {
-                font-size: 1.225em;
+            h2 {
+                font-size: 1.5em;
                 font-weight: 600;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
             }
             p {
                 margin-bottom: 20px;
@@ -12,6 +20,10 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+            }
+            img {
+                width: 300px;
+                height: 200px;
             }
         }
     }

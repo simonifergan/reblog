@@ -14,25 +14,26 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Navbar from './components/layout/Navbar';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
-import BlogList from './components/blogs/BlogList';
-import BlogDetails from './components/blogs/BlogDetails';
+// import BlogList from './components/blogs/BlogList';
+// import BlogDetails from './components/blogs/BlogDetails';
 // import BlogEdit from './components/blogs/BlogEdit';
+import PostList from './components/posts/PostList';
 import PostEdit from './components/posts/PostEdit';
 import PostDetails from './components/posts/PostDetails';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.loadBlogs();
+    this.props.loadPosts();
   }
 
   render() {
-    const { blogs } = this.props;
-    // const { user } = this.props;
+    const { posts } = this.props;
+    const { user } = this.props;
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar />
+          <Navbar user={user} />
           <main>
             <Route render={({ location }) => (
               <TransitionGroup>
@@ -42,18 +43,25 @@ class App extends Component {
                   classNames="fade"
                 >
                   <Switch location={location}>
-                    <Route exact path='/' render={(props) => (<BlogList {...props} blogs={blogs} />)} />
-                    <Route
+                    <Route exact path='/' render={(props) => (<PostList {...props} posts={posts} />)} />
+                    {/* <Route
                       path='/blog/:blogId'
                       render={
                         (props) => (
                           <BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} clearBlogToDisplay={this.props.clearBlogToDisplay} />)
                       }
-                    />
+                    /> */}
                     <Route
                       path='/post/:postId'
                       render={
-                        (props) => (<PostDetails {...props} post={this.props.postToDisplay} loadPostById={this.props.loadPostById} clearPostToDisplay={this.props.clearPostToDisplay} />)
+                        (props) => (
+                          <PostDetails
+                            {...props}
+                            post={this.props.postToDisplay}
+                            removePost={this.props.removePost}
+                            loadPostById={this.props.loadPostById}
+                            clearPostToDisplay={this.props.clearPostToDisplay}
+                          />)
                       }
                     />
                     <Route
@@ -78,7 +86,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    blogs: state.blog.blogs,
+    posts: state.post.posts,
     blogToDisplay: state.blog.blogToDisplay,
     postToDisplay: state.post.postToDisplay,
   }

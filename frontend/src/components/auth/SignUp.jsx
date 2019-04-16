@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './SignUp.scss';
+
 function emptyUser() {
     return {
         email: '',

@@ -1,6 +1,39 @@
 @import '../../assets/css/mixins';
 
 .post-edit {
-    @include wrapper(860px);
     padding: 30px 0;
+    @include wrapper(860px);
+
+    .post-intro {
+
+        .title:focus, .subtitle:focus {
+            outline-color: #333;
+        }
+
+        .title {
+            padding: 20px;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border: 0;
+        }
+    
+        .subtitle {
+            padding: 20px;
+            font-size: 2em;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border: 0;
+            color: lighten(#333, 20%)
+        }
+
+        margin-bottom: 20px;
+    }
+
+    .btn-save-post {
+        @include button();
+        float: right;
+    }
 }

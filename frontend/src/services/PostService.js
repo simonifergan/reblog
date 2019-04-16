@@ -6,8 +6,9 @@ const POST_API = (process.env.NODE_ENV !== 'development')
     : '//localhost:3003/api/post';
 
 
-function query() {
-    return [];
+async function query() {
+    const { data } = await axios.get(POST_API)
+    return data;
 }
 
 async function getById(id) {
@@ -20,9 +21,16 @@ async function save(post) {
     return data;
 }
 
+async function remove(id) {
+    const res = await axios.delete(`${POST_API}/${id}`);
+    if (res.status === 200) return true;
+    else return false;
+}
+
 export default {
     query,
     getById,
     save,
+    remove,
 };
 

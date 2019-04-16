@@ -5,9 +5,9 @@
     align-items: $align;
 }
 
-@mixin button() {
-    background-color: #484848;
-    color: white;
+@mixin button($background-color: #333, $color: white) {
+    background-color: $background-color;
+    color: $color;
     border: none;
     padding: 10px;
     cursor: pointer;

@@ -3,7 +3,11 @@ import React from 'react';
 const PostPreview = ({ post }) => {
     return (
         <li className="post-preview">
-            <h3>{post.title}</h3>
+            <div className="post-intro">
+                <h2>{post.title}</h2>
+                <h3>{post.subtitle}</h3>
+            </div>
+            <img src={post.thumbnail} alt="Post thumbnail" className="post-thumbnail"/>
         </li>
     )
 }

@@ -9,13 +9,15 @@ import './PostContainer.scss';
 
 const PostEdit = (props) => {
     const [title, setTitle] = useState('');
+    const [subtitle, setSubtitle] = useState('');
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [docTitle] = useState(document.title);
     const editorEl = useRef(null);
+    
 
-    const handleTitle = (e) => {
-        setTitle(e.target.value);
-    }
+    const handleTitle = (e) => setTitle(e.target.value);
+    const handleSubtitle = (e) => setSubtitle(e.target.value);
+
 
     const handleChange = (editorState) => setEditorState(editorState);
 
@@ -33,21 +35,25 @@ const PostEdit = (props) => {
         };
     }, [title])
 
-    
-    const save = () => {
+
+    const save = (e) => {
+        e.preventDefault();
         const post = {
             blogId: '5cae3735f039efa164fd137d',
             title,
+            subtitle,
             content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
             createdAt: Date.now(),
         };
-        console.log(post);
         props.savePost(post);
     }
 
     return (
-        <section className="page post-edit">
-            <input value={title} onChange={handleTitle} placeholder="Type your post's title..." />
+        <form onSubmit={save} className="page post-edit">
+            <div className="post-intro">
+                <input className="title" value={title} onChange={handleTitle} placeholder="Type your post's title..." />
+                <input className="subtitle" value={subtitle} onChange={handleSubtitle} placeholder="Type your post's subtitle..." />
+            </div>
             <Toolbar editorState={editorState} editorEl={editorEl} RichUtils={RichUtils} stateChange={handleChange} />
             <div className="post-container">
                 <Editor
@@ -58,8 +64,8 @@ const PostEdit = (props) => {
                     placeholder="Share your story..."
                 />
             </div>
-            <button onClick={save}>Save</button>
-        </section>
+            <button title="Share your post" className="btn btn-save-post" type="submit">Share</button>
+        </form>
     )
 
 }
