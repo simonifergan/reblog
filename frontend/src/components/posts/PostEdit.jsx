@@ -39,7 +39,7 @@ const PostEdit = (props) => {
     const save = (e) => {
         e.preventDefault();
         const post = {
-            blogId: '5cae3735f039efa164fd137d',
+            userId: props.user._id,
             title,
             subtitle,
             content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),

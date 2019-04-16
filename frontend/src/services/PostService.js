@@ -1,3 +1,5 @@
+import {getThumbnail} from './UtilService';
+
 import Axios from 'axios';
 const axios = Axios.create({ withCredentials: true });
 
@@ -17,6 +19,7 @@ async function getById(id) {
 }
 
 async function save(post) {
+    post.thumbnail = getThumbnail();
     const {data} = await axios.post(POST_API, post)
     return data;
 }

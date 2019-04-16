@@ -3,17 +3,22 @@
 
 .post-list {
     font-family: $font-raleway;
+
     ul {
         margin-top: 20px;
         display: grid;
         grid-template-rows: repeat(auto-fill);
         grid-row-gap: 20px;
+
         .post-preview {
+            @include flex(row, space-between);
+
             h2 {
                 font-size: 1.5em;
                 font-weight: 600;
                 margin-bottom: 10px;
             }
+
             p {
                 margin-bottom: 20px;
                 padding-bottom: 5px;
@@ -21,10 +26,14 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
+
             img {
                 width: 300px;
                 height: 200px;
             }
+
         }
+
     }
+    
 }

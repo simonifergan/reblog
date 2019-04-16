@@ -58,12 +58,12 @@ async function getById(postId) {
 
 async function save(post) {
     try {
-        const blogId = post.blogId;
-        post.blogId = new ObjectId(blogId);
+        const userId = post.userId;
+        post.userId = new ObjectId(userId);
         const db = await mongoService.connect();
         const { insertedId } = await db.collection(postsCollection).insertOne(post);
         post._id = insertedId;
-        post.blogId = blogId;
+        post.userId = userId;
         return post;
     } catch (err) {
         return null;

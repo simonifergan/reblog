@@ -67,7 +67,7 @@ class App extends Component {
                     <Route
                       path='/new/post/:postId?'
                       render={
-                        (props) => (<PostEdit {...props} savePost={this.props.savePost} />)
+                        (props) => (<PostEdit {...props} user={user} savePost={this.props.savePost} />)
                       }
                     />
                     <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
