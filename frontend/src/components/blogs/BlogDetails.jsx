@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PostList from '../posts/PostList';
 
+import './BlogDetails.scss';
 
 const BlogDetails = (props) => {
   const [blogId, setBlogId] = useState(props.match.params.blogId);

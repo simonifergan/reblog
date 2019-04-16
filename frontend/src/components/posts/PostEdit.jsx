@@ -4,6 +4,8 @@ import 'draft-js/dist/Draft.css';
 
 import Toolbar from '../editor/Toolbar';
 
+import './PostEdit.scss';
+import './PostContainer.scss';
 
 const PostEdit = (props) => {
     const [title, setTitle] = useState('');

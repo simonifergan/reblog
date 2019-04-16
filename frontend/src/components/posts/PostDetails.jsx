@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Editor, EditorState, convertFromRaw } from 'draft-js'
 import 'draft-js/dist/Draft.css';
+import './PostDetails.scss';
+import './PostContainer.scss';
 
 
 const PostDetails = (props) => {

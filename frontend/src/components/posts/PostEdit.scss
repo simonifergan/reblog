@@ -1,3 +1,5 @@
+@import '../../assets/css/mixins';
+
 .post-edit {
     @include wrapper(860px);
     padding: 30px 0;

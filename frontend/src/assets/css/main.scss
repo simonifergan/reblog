@@ -4,16 +4,12 @@
 @import 'mixins';
 @import 'vars';
 
-// Components
-@import './components/signup';
-@import './components/blogList';
-@import './components/blogDetails';
+// Fonts
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/rt-raleway/rtraleway-regular.ttf');
+}
 
-// Posts
-@import './components/postList';
-@import './components/postDetails';
-@import './components/postEdit';
-@import './components/postContainer';
 
 * {
     box-sizing: border-box;
