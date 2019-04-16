@@ -44,7 +44,6 @@
 
     .user-thumbnail {
         grid-column-start: 2;
-        padding: 10px;
         justify-self: center;
         @include userImg(50px, 50px);
     }

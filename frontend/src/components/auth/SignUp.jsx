@@ -7,7 +7,8 @@ function emptyUser() {
         email: '',
         password: '',
         firstname: '',
-        lastname: ''
+        lastname: '',
+        desc: '',
     }
 }
 
@@ -17,6 +18,7 @@ const SignUp = (props) => {
     user.password = useFormInput(user.password);
     user.firstname = useFormInput(user.firstname);
     user.lastname = useFormInput(user.lastname);
+    user.desc = useFormInput(user.desc);
 
     const save = (e) => {
         e.preventDefault();
@@ -34,19 +36,23 @@ const SignUp = (props) => {
             <form onSubmit={save}>
                 <label>
                     E-mail:
-                    <input {...user.email}/>
+                    <input type="email" placeholder="ex@example.com" {...user.email}/>
                 </label>
                 <label>
                     Password:
-                    <input {...user.password}/>
+                    <input type="password" placeholder="Type a secret password" {...user.password}/>
                 </label>
                 <label>
                     First name:
-                    <input {...user.firstname}/>
+                    <input placeholder="e.g. John" {...user.firstname}/>
                 </label>
                 <label>
                     Last name:
-                    <input {...user.lastname}/>
+                    <input placeholder="e.g. Doe" {...user.lastname}/>
+                </label>
+                <label>
+                    About:
+                    <input placeholder="Share something about you" {...user.desc}/>
                 </label>
                 <button type="submit">Sign up</button>
             </form>

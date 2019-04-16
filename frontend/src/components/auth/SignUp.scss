@@ -11,9 +11,12 @@
             display: grid;
             grid-template-columns: 0.5fr 1fr;
             padding: 20px;
+            align-items: center;
 
             input {
                 margin-left: 10px;
+                padding: 5px 10px;
+                font-family: $font-raleway;
             }
 
             
