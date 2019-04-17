@@ -24,3 +24,13 @@ export const signup = (newUser) => {
         }
     }
 }
+
+export const logout = () => {
+    return async (dispatch) => {
+        const res = await UserService.logout();
+        if (res) {
+            dispatch({ type: 'SET_USER', user: null })
+            return res;
+        } else return res;
+    }
+}

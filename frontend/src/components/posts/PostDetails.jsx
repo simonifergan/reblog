@@ -3,6 +3,7 @@ import { Editor, EditorState, convertFromRaw } from 'draft-js'
 import 'draft-js/dist/Draft.css';
 import './PostDetails.scss';
 import './PostContainer.scss';
+import UserPreview from '../user/UserPreview'
 
 
 const PostDetails = (props) => {
@@ -43,6 +44,7 @@ const PostDetails = (props) => {
       <div className="post-intro">
         <h1 className="title">{post.title}</h1>
         <h2 className="subtitle">{post.subtitle}</h2>
+        <UserPreview user={post.user} postCreatedAt={post.createdAt} />
       </div>
       <div className="post-container">
         <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(post.content)))} readOnly />

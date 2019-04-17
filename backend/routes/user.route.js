@@ -68,7 +68,7 @@ module.exports = (app) => {
 
     app.post(`${BASE}/logout`, (req, res) => {
         delete req.session.user;
-        res.end();
+        res.status(200).end();
     });
 
 }

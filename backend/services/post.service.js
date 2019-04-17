@@ -49,8 +49,33 @@ async function query() {
 async function getById(postId) {
     try {
         const db = await mongoService.connect();
-        const post = await db.collection(postsCollection).findOne({ _id: new ObjectId(postId) })
-        return post;
+        const post = await db.collection(postsCollection)
+            .aggregate([
+                {
+                    $match: { _id: new ObjectId(postId) }
+                },
+                {
+                    $lookup:
+                    {
+                        from: usersCollection,
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'user'
+                    }
+                },
+                {
+                    $project: {
+                        user: {
+                            password: 0,
+                        }
+                    }
+                },
+                {
+                    $unwind: '$user',
+                },
+
+            ]).toArray();
+        return post[0];
     } catch (err) {
         return null;
     }

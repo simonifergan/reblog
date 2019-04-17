@@ -43,15 +43,25 @@ p {
         @include wrapper(1200px);
         font-family: $font-raleway;
         width: 100%;
-        padding: 20px 0;
         .logo {
             font-size: 2em;
+            padding: 20px 0;
         }
         .links {
             @include flex(row, space-between, center);
             font-size: 1em;
             a:not(:first-of-type) {
                 margin-left: 10px;
+            }
+            
+            a {
+                padding: 20px 0;
+                height: 100%;
+                border-bottom: 2px solid transparent;
+
+                &.active {
+                    border-bottom: 2px solid #333;
+                }
             }
         }
     }

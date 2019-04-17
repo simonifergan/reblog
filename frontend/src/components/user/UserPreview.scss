@@ -1,8 +1,9 @@
 @import '../../assets/css/mixins';
 
 .user-preview {
-    img {
+    @include flex(row);
+    .user-profile-pic {
 
-        @include userImg(250px, 250px);
+        @include userImg(100px, 100px);
     }
 }

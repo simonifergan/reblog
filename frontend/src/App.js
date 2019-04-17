@@ -31,11 +31,11 @@ class App extends Component {
     const { posts } = this.props;
     const { user } = this.props;
     return (
-      <div className="App">
-        <BrowserRouter>
-          <Navbar user={user} />
-          <Route render={({ location }) => (
-            <main className={(location.pathname !== '/')? 'with-background': null}>
+      <BrowserRouter>
+        <Route render={({ history, location }) => (
+          <div className="App">
+            <Navbar history={history} user={user} logout={this.props.logout} />
+            <main className={(location.pathname !== '/') ? 'with-background' : null}>
               <section className="main-content">
                 <TransitionGroup>
                   <CSSTransition
@@ -72,9 +72,9 @@ class App extends Component {
                 </TransitionGroup>
               </section>
             </main>
-          )} />
-        </BrowserRouter>
-      </div>
+          </div>
+        )} />
+      </BrowserRouter>
     );
   }
 }

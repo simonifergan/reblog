@@ -1,23 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export default ({ user }) => {
+export default ({ user, logout, history }) => {
+    const onLogout = async () => {
+        if (await logout()) history.push('/')
+    }
+
     const links = (user) ?
         (
             <div className="links">
-                <Link to='/new/post/'><h1>New post</h1></Link>
+                <NavLink to='/new/post/'>New post</NavLink>
+                <NavLink onClick={onLogout} to='#'>Log out</NavLink>
             </div>
         ) : (
             <div className="links">
-                <Link to='/signup'><h1>Sign up</h1></Link>
-                <Link to='/signin'><h1>Sign in</h1></Link>
+                <NavLink to='/signup'>Sign up</NavLink>
+                <NavLink to='/signin'>Sign in</NavLink>
             </div>
         );
     return (
         <nav className="main-nav">
             <div className="wrapper">
                 <div className="logo">
-                    <Link to='/'><h1>RePost</h1></Link>
+                    <NavLink to='/'><h1>RePost</h1></NavLink>
                 </div>
                 {links}
             </div>
