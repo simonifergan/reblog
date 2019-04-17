@@ -49,10 +49,18 @@
 
                     .user-popup-container {
                         position: relative;
+                        .user-name {
+                            padding: 10px 0 ;
 
+                        }
                         .user-name:hover {
                             text-decoration: underline;
                         }
+                        
+                    }
+
+                    p {
+                        margin: 5px 0;
                     }
                     
                 }

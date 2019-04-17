@@ -7,7 +7,7 @@ import UserPreview from '../user/UserPreview'
 
 
 const PostDetails = (props) => {
-  const [postId, setPostId] = useState(props.match.params.postId);
+  const [postId, setPostId] = useState(null);
   const docTitle = document.title;
   const { post, user } = props;
 
@@ -15,7 +15,7 @@ const PostDetails = (props) => {
     if (postId !== props.match.params.postId) {
       setPostId(props.match.params.postId);
       props.loadPostById(props.match.params.postId)
-    } else props.loadPostById(props.match.params.postId)
+    }
 
     return () => {
       props.clearPostToDisplay();

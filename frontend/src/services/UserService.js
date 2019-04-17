@@ -37,12 +37,21 @@ async function logout() {
     }
 }
 
+async function getById(id) {
+    try {
+        const {data} = await axios.get(`${API}/user/${id}`)
+        return data;
+    } catch (err) {
+        throw err;
+    }
+}
 
 
 export default {
     query,
     signup,
     auth,
-    logout
+    logout,
+    getById
 };
 

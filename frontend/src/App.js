@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as authActions from './store/actions/AuthActions';
-import * as blogActions from './store/actions/BlogActions';
+import * as userActions from './store/actions/UserActions';
 import * as postActions from './store/actions/PostActions';
 
 // Transitions
@@ -20,6 +20,7 @@ import SignIn from './components/auth/SignIn';
 import PostList from './components/posts/PostList';
 import PostEdit from './components/posts/PostEdit';
 import PostDetails from './components/posts/PostDetails';
+import UserDetails from './components/user/UserDetails';
 
 class App extends Component {
 
@@ -65,6 +66,12 @@ class App extends Component {
                           (props) => (<PostEdit {...props} user={user} savePost={this.props.savePost} />)
                         }
                       />
+                      <Route
+                        path='/user/:userId'
+                        render={
+                          (props) => (<UserDetails {...props} user={this.props.userToDisplay} loadUser={this.props.loadUserById} clearUser={this.props.clearUserToDisplay} />)
+                        }
+                      />
                       <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
                       <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
                     </Switch>
@@ -83,15 +90,15 @@ const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
     posts: state.post.posts,
-    blogToDisplay: state.blog.blogToDisplay,
+    userToDisplay: state.user.userToDisplay,
     postToDisplay: state.post.postToDisplay,
   }
 }
 
 const mapDispatchToProps = {
+  ...postActions,
+  ...userActions,
   ...authActions,
-  ...blogActions,
-  ...postActions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

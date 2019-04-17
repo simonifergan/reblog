@@ -16,9 +16,15 @@ module.exports = (app) => {
 
     // all users
     app.get(`${BASE}/user`, (req, res) => {
-        userService.query()
-            .then(users => res.json(users))
-            .catch(err => res.end(err));
+        // Not necessary atm, maybe in the future.
+    });
+
+    // Get Single user by Id with his posts
+    app.get(`${BASE}/user/:userId`, async (req, res) => {
+        const {userId} = req.params;
+        const user = await userService.getById(userId);
+        if (user) res.json(user);
+        else res.status(404).end();
     });
 
     app.post(`${BASE}/login`, async (req, res) => {

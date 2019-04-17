@@ -71,7 +71,7 @@ main {
     min-height: calc(100vh - 72px);
 
     &.with-background {
-        background-color: #fcfcfc;
+        background-color: $background-clr1;
     }
 
     .main-content {

@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     query,
+    getById,
     login,
     loginWithFacebook,
     signup,
@@ -13,6 +14,7 @@ module.exports = {
 }
 
 const usersCollection = 'users';
+const postsCollection = 'posts';
 const subscribersCollection = 'subscribers';
 
 function query(userIds) {
@@ -93,6 +95,33 @@ async function loginWithFacebook(user) {
         throw err;
     }
 
+}
+
+async function getById(userId) {
+    try {
+        const db = await mongoService.connect();
+        const user = await db.collection(usersCollection)
+            .aggregate([
+                {
+                    $match: { _id: new ObjectId(userId) }
+                },
+                {
+                    $lookup:
+                    {
+                        from: postsCollection,
+                        localField: '_id',
+                        foreignField: 'userId',
+                        as: 'posts'
+                    }
+                },
+            ])
+            .toArray();
+        
+        if (user.length) delete user[0].password;
+        return user[0];
+    } catch (err) {
+        return null;
+    }
 }
 
 async function signup(user) {
