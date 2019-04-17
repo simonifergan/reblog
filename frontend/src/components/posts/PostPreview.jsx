@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from '../../filters/Moment';
 import UserPopUp from '../user/UserPopUp';
@@ -18,6 +18,11 @@ const PostPreview = ({ post }) => {
         hidePopUpTimeout = setTimeout(() => setIsUserPopUpVisible(false), 800);
     }
 
+    useEffect(() => {
+        return () => {
+            if (hidePopUpTimeout) clearTimeout(hidePopUpTimeout);
+        }
+    }, [isUserPopUpVisible])
 
     return (
         <li className="post-preview">

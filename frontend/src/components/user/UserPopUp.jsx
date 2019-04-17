@@ -7,6 +7,7 @@ const UserPopUp = ({ user }) => {
     const style = {
         backgroundImage: `url('${user.profilePic}')`
     }
+
     return (
         <div className="user-pop-up">
             <div className="user-info">
