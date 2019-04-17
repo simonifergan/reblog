@@ -34,49 +34,45 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Navbar user={user} />
-          <main>
-            <Route render={({ location }) => (
-              <TransitionGroup>
-                <CSSTransition
-                  key={location.key}
-                  timeout={500}
-                  classNames="fade"
-                >
-                  <Switch location={location}>
-                    <Route exact path='/' render={(props) => (<PostList {...props} posts={posts} />)} />
-                    {/* <Route
-                      path='/blog/:blogId'
-                      render={
-                        (props) => (
-                          <BlogDetails {...props} blog={this.props.blogToDisplay} loadBlogById={this.props.loadBlogById} clearBlogToDisplay={this.props.clearBlogToDisplay} />)
-                      }
-                    /> */}
-                    <Route
-                      path='/post/:postId'
-                      render={
-                        (props) => (
-                          <PostDetails
-                            {...props}
-                            post={this.props.postToDisplay}
-                            removePost={this.props.removePost}
-                            loadPostById={this.props.loadPostById}
-                            clearPostToDisplay={this.props.clearPostToDisplay}
-                          />)
-                      }
-                    />
-                    <Route
-                      path='/new/post/:postId?'
-                      render={
-                        (props) => (<PostEdit {...props} user={user} savePost={this.props.savePost} />)
-                      }
-                    />
-                    <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
-                    <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
-                  </Switch>
-                </CSSTransition>
-              </TransitionGroup>
-            )} />
-          </main>
+          <Route render={({ location }) => (
+            <main className={(location.pathname !== '/')? 'with-background': null}>
+              <section className="main-content">
+                <TransitionGroup>
+                  <CSSTransition
+                    key={location.key}
+                    timeout={500}
+                    classNames="fade"
+                  >
+                    <Switch location={location}>
+                      <Route exact path='/' render={(props) => (<PostList {...props} posts={posts} />)} />
+                      <Route
+                        path='/post/:postId'
+                        render={
+                          (props) => (
+                            <PostDetails
+                              {...props}
+                              post={this.props.postToDisplay}
+                              user={user}
+                              removePost={this.props.removePost}
+                              loadPostById={this.props.loadPostById}
+                              clearPostToDisplay={this.props.clearPostToDisplay}
+                            />)
+                        }
+                      />
+                      <Route
+                        path='/new/post/:postId?'
+                        render={
+                          (props) => (<PostEdit {...props} user={user} savePost={this.props.savePost} />)
+                        }
+                      />
+                      <Route path='/signin' render={(props) => (<SignIn {...props} auth={this.props.auth} />)} />
+                      <Route path='/signup' render={(props) => (<SignUp {...props} signup={this.props.signup} />)} />
+                    </Switch>
+                  </CSSTransition>
+                </TransitionGroup>
+              </section>
+            </main>
+          )} />
         </BrowserRouter>
       </div>
     );

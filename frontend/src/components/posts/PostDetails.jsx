@@ -8,7 +8,7 @@ import './PostContainer.scss';
 const PostDetails = (props) => {
   const [postId, setPostId] = useState(props.match.params.postId);
   const docTitle = document.title;
-  const { post } = props;
+  const { post, user } = props;
 
   useEffect(() => {
     if (postId !== props.match.params.postId) {
@@ -39,7 +39,7 @@ const PostDetails = (props) => {
 
   return (post) ? (
     <section className="page post-details">
-      <button className="btn btn-remove-post" onClick={remove}>Delete post</button>
+      {(user && user._id === post.userId)? <button className="btn btn-remove-post" onClick={remove}>Delete post</button> : null}
       <div className="post-intro">
         <h1 className="title">{post.title}</h1>
         <h2 className="subtitle">{post.subtitle}</h2>

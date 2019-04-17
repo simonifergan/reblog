@@ -33,8 +33,11 @@ p {
     line-height: 1.5;
 }
 
+
 .main-nav {
-    box-shadow: 0px 1px 3px black;
+    box-shadow: 0px 1px .5px 0px black;
+    position: relative;
+    z-index: 1;
     .wrapper {
         @include flex(row,space-between,center);
         @include wrapper(1200px);
@@ -55,15 +58,25 @@ p {
 }
 
 main {
-    position: relative;
-    @include wrapper(860px);
-    .page {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 30px 0 20px 0;
+    min-height: calc(100vh - 72px);
+
+    &.with-background {
+        background-color: #fcfcfc;
     }
+
+    .main-content {
+        position: relative;
+        @include wrapper(860px);
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 0 20px 0;
+        }
+    }
+    
 }
 
 // react transitions:

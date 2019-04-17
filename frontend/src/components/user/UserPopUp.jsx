@@ -13,7 +13,7 @@ const UserPopUp = ({ user }) => {
                 <Link to={'/user/' + user._id}><h2 title={`Go to ${user.firstname} ${user.lastname}'s profile`}>{user.firstname} {user.lastname}</h2></Link>
                 <p>{user.desc}</p>
             </div>
-             <Link to={'/user/' + user._id} className="user-thumbnail" style={style} title={`Go to ${user.firstname} ${user.lastname}'s profile`} />
+            <Link to={'/user/' + user._id} className="user-thumbnail" style={style} title={`Go to ${user.firstname} ${user.lastname}'s profile`} />
         </div>
     )
 }
