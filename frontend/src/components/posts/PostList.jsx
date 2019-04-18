@@ -3,10 +3,11 @@ import PostPreview from './PostPreview';
 
 import './PostList.scss';
 
-const PostList = ({posts}) => {
+const PostList = ({posts, history, match}) => {
     const postPreviews = posts.map(post => <PostPreview key={post._id} post={post}/>)
+    const classNames = (match.path !== '/') ? 'post-list' : 'page post-list';
     return (
-        <section className="page post-list">
+        <section className={classNames}>
             <ul>
                 {postPreviews}
             </ul>

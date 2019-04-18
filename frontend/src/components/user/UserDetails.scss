@@ -1,0 +1,29 @@
+@import '../../assets/css/mixins';
+@import '../../assets/css/fonts';
+
+
+.user-details {
+    font-family: $font-raleway;
+    line-height: 1.5;
+    
+    .user-info {
+        margin-bottom: 20px; 
+
+        .user-preview {
+            h3 {
+                font-size: 2em;
+            }
+            
+            h4 {
+                color: lighten(#333, 30%);
+            }
+        }
+    }
+
+    .user-posts-container {
+
+        h2 {
+            font-size: 1.5em;
+        }
+    }
+}

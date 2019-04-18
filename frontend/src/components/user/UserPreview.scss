@@ -2,8 +2,13 @@
 
 .user-preview {
     @include flex(row);
-    .user-profile-pic {
 
+    .user-profile-pic {
         @include userImg(100px, 100px);
+    }
+
+    .user-content {
+        margin-left: 20px;
+        align-self: center;
     }
 }

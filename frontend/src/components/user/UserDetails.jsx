@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
+import './UserDetails.scss';
+
 import PostList from '../posts/PostList';
 import UserPreview from './UserPreview';
+
 
 export default (props) => {
     const [userId, setUserId] = useState(null)
@@ -25,7 +29,8 @@ export default (props) => {
                 <UserPreview user={user} />
             </article>
             <article className="user-posts-container">
-                {(user.posts.length) ? <PostList posts={user.posts} /> : null}
+                <h2>{user.firstname}'s posts</h2>
+                {(user.posts.length) ? <PostList match={props.match} posts={user.posts} /> : null}
             </article>
         </section>
     ) : null
