@@ -27,9 +27,9 @@ export const savePost = (post) => {
     return async () => {
         try {
             const newPost = await PostService.save(post);
-            console.log(newPost);
+            return newPost;
         } catch (err) {
-            console.log(err);
+            return false;
         }
     }
 }

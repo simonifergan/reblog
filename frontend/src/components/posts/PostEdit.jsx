@@ -36,7 +36,7 @@ const PostEdit = (props) => {
     }, [title])
 
 
-    const save = (e) => {
+    const save = async (e) => {
         e.preventDefault();
         const post = {
             userId: props.user._id,
@@ -45,7 +45,8 @@ const PostEdit = (props) => {
             content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
             createdAt: Date.now(),
         };
-        props.savePost(post);
+        const newPost = await props.savePost(post);
+        if (newPost) props.history.push('/post/' + newPost._id);
     }
 
     return (
