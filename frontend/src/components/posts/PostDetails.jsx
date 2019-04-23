@@ -11,6 +11,10 @@ const PostDetails = (props) => {
   const docTitle = document.title;
   const { post, user } = props;
 
+  const followUser = async () => {
+    
+  }
+
   useEffect(() => {
     if (postId !== props.match.params.postId) {
       setPostId(props.match.params.postId);
@@ -40,11 +44,11 @@ const PostDetails = (props) => {
 
   return (post) ? (
     <section className="page post-details">
-      {(user && user._id === post.userId)? <button className="btn btn-remove-post" onClick={remove}>Delete post</button> : null}
+      {(user && user._id === post.userId) ? <button className="btn btn-remove-post" onClick={remove}>Delete post</button> : null}
       <div className="post-intro">
         <h1 className="title">{post.title}</h1>
         <h2 className="subtitle">{post.subtitle}</h2>
-        <UserPreview user={post.user} postCreatedAt={post.createdAt} />
+        <UserPreview followUser={followUser} user={post.user} postCreatedAt={post.createdAt} />
       </div>
       <div className="post-container">
         <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(post.content)))} readOnly />

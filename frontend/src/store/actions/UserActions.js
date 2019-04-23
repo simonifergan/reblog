@@ -18,4 +18,3 @@ export const clearUserToDisplay = () => {
         dispatch({type: 'SET_USER_TO_DISPLAY', user: null })
     }
 }
-

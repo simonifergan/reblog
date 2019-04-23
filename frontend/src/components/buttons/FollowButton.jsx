@@ -1,9 +1,9 @@
 import React from 'react';
 import './FollowButton.scss';
 
-export default ({clickHandler}) => {
+export default ({clickHandler, firstname}) => {
     return (
-        <button className="btn btn-follow" onClick={clickHandler}>
+        <button title={(firstname)? `Follow ${firstname}`: null} className="btn btn-follow" onClick={clickHandler}>
             Follow
         </button>
     )
